@@ -14,6 +14,10 @@ struct ContentView: View {
     let users = ["Leal", "Alfredo", "Chaires"]
     @State private var selectedUser = "Leal"
     
+    @State private var checkAmount = 100;
+    @State private var numberOfPeople = 2;
+    @State private var percentage = 10;
+    
     var body: some View {
         NavigationStack{
             Form{
@@ -44,6 +48,21 @@ struct ContentView: View {
                             Text($0)
                         }
                     }
+                }
+                
+                Section{
+                    VStack{
+                        Text("CHECK CALCULATOR").font(.title.bold())
+                        HStack{
+                            Text("Check")
+                            TextField("Amount",
+                                      value: $checkAmount,
+                                      format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
+                            .keyboardType(.decimalPad)
+                                      
+                        }
+                    }
+            
                 }
                 
             }.navigationTitle("We Split")
