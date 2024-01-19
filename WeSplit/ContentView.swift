@@ -9,6 +9,10 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var counter = 0;
+    @State private var name = "";
+    
+    let users = ["Leal", "Alfredo", "Chaires"]
+    @State private var selectedUser = "Leal"
     
     var body: some View {
         NavigationStack{
@@ -29,7 +33,18 @@ struct ContentView: View {
                     }
                 }
                 
+                Section{
+                    TextField("Enter your name", text: $name)
+                    Text("Your name is: \(name)")
+                }
                 
+                Section{
+                    Picker("Select your student", selection: $selectedUser){
+                        ForEach(users, id:\.self){
+                            Text($0)
+                        }
+                    }
+                }
                 
             }.navigationTitle("We Split")
         }
