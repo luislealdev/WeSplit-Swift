@@ -8,14 +8,31 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var counter = 0;
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationStack{
+            Form{
+                Section{
+                    Text("Hola Mundo")
+                    Text("Hola Mundo")
+                    Text("Hola Mundo")
+                }
+                
+                Section{
+                    HStack(){
+                        Text("\(counter)")
+                        Button("+1"){
+                            counter+=1
+                        }.padding()
+                        
+                    }
+                }
+                
+                
+                
+            }.navigationTitle("We Split")
         }
-        .padding()
     }
 }
 
