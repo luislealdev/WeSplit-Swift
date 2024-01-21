@@ -14,11 +14,22 @@ struct ContentView: View {
     let users = ["Leal", "Alfredo", "Chaires"]
     @State private var selectedUser = "Leal"
     
-    @State private var checkAmount = 100;
+    @State private var checkAmount = 100.0;
     @State private var numberOfPeople = 2;
     @State private var percentage = 10;
     
     let percentageList = [0,10,20,30]
+    
+    var totalPerPerson:Double{
+        let tipSelection = Double(percentage)
+        let peopleCount = Double(numberOfPeople + 2)
+        
+        print(peopleCount)
+        
+        let tipValue = (checkAmount*tipSelection)/100
+        
+        return ((checkAmount+tipValue)/peopleCount)
+    }
     
     var body: some View {
         NavigationStack{
@@ -75,6 +86,7 @@ struct ContentView: View {
                                 }
                             }.pickerStyle(.segmented)
                         }
+                        Text("TOTAL PER PERSON IS: $\(totalPerPerson.formatted())").padding(.top).bold()
                     }
             
                 }
