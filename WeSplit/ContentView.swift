@@ -18,6 +18,8 @@ struct ContentView: View {
     @State private var numberOfPeople = 2;
     @State private var percentage = 10;
     
+    let percentageList = [0,10,20,30]
+    
     var body: some View {
         NavigationStack{
             Form{
@@ -65,6 +67,13 @@ struct ContentView: View {
                             ForEach(2..<100){
                                 Text("\($0) people")
                             }
+                        }
+                        Section("How much would you like to tip"){
+                            Picker("Tip percentage", selection: $percentage){
+                                ForEach(percentageList, id:\.self){
+                                    Text($0, format: .percent)
+                                }
+                            }.pickerStyle(.segmented)
                         }
                     }
             
