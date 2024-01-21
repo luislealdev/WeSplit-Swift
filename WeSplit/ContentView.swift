@@ -61,6 +61,11 @@ struct ContentView: View {
                             .keyboardType(.decimalPad)
                                       
                         }
+                        Picker("Number of people", selection: $numberOfPeople){
+                            ForEach(2..<100){
+                                Text("\($0) people")
+                            }
+                        }
                     }
             
                 }
